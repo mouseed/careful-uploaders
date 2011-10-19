@@ -18,210 +18,227 @@
 
 $width: 293px
 $height: 30px
+$parent: 'uploadcare-line'
 
 // Common styles
-.uploadcare-line
-  &-uploader
-    width: $width
-    height: $height
-    line-height: $height
-    +border-radius(2px)
-    border: 1px solid #d8d8d8
-    background: #f6f6f6
-    +background( linear-gradient(#fcfcfc, #ececec) )
-    color: #333
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
-    font-size: 13px
-    font-weight: bold
-    +box-shadow(rgba(0, 0, 0, 0.08) 0 1px 3px)
-    position: relative
-    &.uploadcare-error
-      +box-shadow(none)
-  &-cropper
-    position: absolute
-    top: -1px
-    left: -1px
-    height: 100%
-    width: 100%
-    padding: 1px
-    overflow: hidden
-  &-thumb
-    float: left
-    width: 30px
-    height: $height
-    border-right: 1px solid #d8d8d8
-    margin-right: 9px
-    position: relative
-  &-thumb-empty
-    position: absolute
-    top: 3px
-    left: 3px
-    +sprite(empty)
-  &-buttons
-    float: right
-    a
-      display: block
-      float: left
-      height: 22px
-      line-height: 22px
-      margin: 3px 3px 0 0
-      padding: 0 7px
-      border: 1px solid #abcddc
-      border-color: #abcddc #a0c3d3 #92b8c9 #a0c3d3
-      text-decoration: none
-      color: #7dadc1
-      text-shadow: white 0 1px 1px
-      font-size: 12px
-      background: #e6f5fb
-      +background( linear-gradient(#f4fbfe, #d5eef8) )
-      +border-radius(2px)
-      +box-shadow(rgba(0, 0, 0, 0.1) 0 1px 1px)
-  &-buttons &-icon
-    position: absolute
-    left: 7px
-  &-cancel
+.#{$parent}-uploader
+  width: $width
+  height: $height
+  line-height: $height
+  +border-radius(2px)
+  border: 1px solid #d8d8d8
+  background: #f6f6f6
+  +background( linear-gradient(#fcfcfc, #ececec) )
+  color: #333
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+  font-size: 13px
+  font-weight: bold
+  +box-shadow(rgba(0, 0, 0, 0.08) 0 1px 3px)
+  position: relative
+  &.uploadcare-error
+    +box-shadow(none)
+    
+.#{$parent}-cropper
+  position: absolute
+  top: -1px
+  left: -1px
+  height: 100%
+  width: 100%
+  padding: 1px
+  overflow: hidden
+  
+.#{$parent}-thumb
+  float: left
+  width: 30px
+  height: $height
+  border-right: 1px solid #d8d8d8
+  margin-right: 9px
+  position: relative
+  
+.#{$parent}-thumb-empty
+  position: absolute
+  top: 3px
+  left: 3px
+  +sprite(empty)
+  
+.#{$parent}-buttons
+  float: right
+  a
     display: block
-    float: right
-    +sprite(cancel)
-    padding: 2px
-    margin: 9px 4px 0 1px
-  &-slider
-    +transition(all, 300ms)
-    position: relative
-    margin: 0
-
-// Upload from
-.uploadcare-line
-  &-buttons &-computer
-    padding-left: image-width(image(computer)) + 7px + 5px
-    position: relative
-    margin-top: 0
-    .uploadcare-line-icon
-      top: 5px
-      +sprite(computer)
-  &-buttons &-web
-    padding-left: image-width(image(web)) + 7px + 5px
-    position: relative
-    .uploadcare-line-icon
-      top: 2px
-      +sprite(web)
-  &-file-input
     float: left
-    overflow: hidden
-    position: relative
-    margin-top: 3px
-    input
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      +opacity(0)
-      cursor: pointer
-      z-index: 2
+    height: 22px
+    line-height: 22px
+    margin: 3px 3px 0 0
+    padding: 0 7px
+    border: 1px solid #abcddc
+    border-color: #abcddc #a0c3d3 #92b8c9 #a0c3d3
+    text-decoration: none
+    color: #7dadc1
+    text-shadow: white 0 1px 1px
+    font-size: 12px
+    background: #e6f5fb
+    +background( linear-gradient(#f4fbfe, #d5eef8) )
+    +border-radius(2px)
+    +box-shadow(rgba(0, 0, 0, 0.1) 0 1px 1px)
 
-// Upload from URL
-.uploadcare-line
-  &-uploader.uploadcare-from-url &-slider
-    left: -$width
-  &-from-url
+.#{$parent}-buttons .#{$parent}-icon
+  position: absolute
+  left: 7px
+
+.#{$parent}-cancel
+  display: block
+  float: right
+  +sprite(cancel)
+  padding: 2px
+  margin: 9px 4px 0 1px
+
+.#{$parent}-slider
+  +transition(all, 300ms)
+  position: relative
+  margin: 0
+
+// Upload from hard drive
+.#{$parent}-buttons .#{$parent}-computer
+  padding-left: image-width(image(computer)) + 7px + 5px
+  position: relative
+  margin-top: 0
+  .uploadcare-line-icon
+    top: 5px
+    +sprite(computer)
+
+.#{$parent}-buttons .#{$parent}-web
+  padding-left: image-width(image(web)) + 7px + 5px
+  position: relative
+  .uploadcare-line-icon
+    top: 2px
+    +sprite(web)
+
+.#{$parent}-file-input
+  float: left
+  overflow: hidden
+  position: relative
+  margin-top: 3px
+  input
     position: absolute
     top: 0
-    left: $width
-    width: $width
-  &-title
-    margin: 0 5px 0 10px
-    float: left
-  &-url
-    float: left
-    border: 1px solid #b9bcbe
-    border-color: #b9bcbe #bdc0c2 #c1c5c7 #bdc0c2
-    +border-radius(2px)
-    background: white
-    color: #777
-    height: 22px
-    width: 160px
-    padding: 0 5px
-    +box-shadow(rgba(0, 0, 0, 0.15) 0 1px 1px 0 inset)
-    margin: 3px 3px 0 0
-    &:focus
-      outline: none
-  &-right
-    float: right
-  &-right &-buttons
-    float: left
-  &-right &-cancel
-    float: left
+    left: 0
+    width: 100%
+    height: 100%
+    +opacity(0)
+    cursor: pointer
+    z-index: 2
+
+// Upload from URL
+.#{$parent}-uploader.uploadcare-from-url .#{$parent}-slider
+  left: -$width
+
+.#{$parent}-from-url
+  position: absolute
+  top: 0
+  left: $width
+  width: $width
+  
+.#{$parent}-title
+  margin: 0 5px 0 10px
+  float: left
+
+.#{$parent}-url
+  float: left
+  border: 1px solid #b9bcbe
+  border-color: #b9bcbe #bdc0c2 #c1c5c7 #bdc0c2
+  +border-radius(2px)
+  background: white
+  color: #777
+  height: 22px
+  width: 160px
+  padding: 0 5px
+  +box-shadow(rgba(0, 0, 0, 0.15) 0 1px 1px 0 inset)
+  margin: 3px 3px 0 0
+  &:focus
+    outline: none
+
+.#{$parent}-right
+  float: right
+
+.#{$parent}-right .#{$parent}-buttons
+  float: left
+  
+.#{$parent}-right .#{$parent}-cancel
+  float: left
 
 // Uploading
-.uploadcare-line
-  &-uploader.uploadcare-uploading &-slider
-    margin-top: -$height
-  &-progress
-    float: right
-    width: 137px
-    height: 4px
-    margin: 12px 4px 0 0
-    border: 1px solid #c9c9c9
-    border-top-color: #bbb
-    +border-radius(2px)
-    background: #d8d8d8
-    +box-shadow(#d0d0d0 0 1px 0 0 inset)
-    position: relative
-    div
-      position: absolute
-      width: 40px
-      height: 4px
-      top: -1px
-      left: -1px
-      border: 1px solid #a9ccdb
-      +border-radius(2px)
-      background: #b7e2f3 inline-image(image(progress))
-      +box-shadow(rgba(255, 255, 255, 0.3) 0 1px 0 0 inset)
+.#{$parent}-uploader.uploadcare-uploading .#{$parent}-slider
+  margin-top: -$height
 
-// Error
-.uploadcare-line
-  &-error-wrapper
-    display: none
+.#{$parent}-progress
+  float: right
+  width: 137px
+  height: 4px
+  margin: 12px 4px 0 0
+  border: 1px solid #c9c9c9
+  border-top-color: #bbb
+  +border-radius(2px)
+  background: #d8d8d8
+  +box-shadow(#d0d0d0 0 1px 0 0 inset)
+  position: relative
+  div
     position: absolute
+    width: 40px
+    height: 4px
     top: -1px
     left: -1px
-    overflow: hidden
-    z-index: 10
-  &-error
-    padding: 5px 0
-    line-height: $height - 10px
-    width: $width
-    border: 1px solid #dda1a5
+    border: 1px solid #a9ccdb
     +border-radius(2px)
-    color: #d15d62
-    background: white
-    +box-shadow(rgba(206, 88, 93, 0.45) 0 0 15px 0 inset)
-    position: relative
-    display: inline-block
-  &-error-cloud
-    position: absolute
-    top: 6px
-    left: 9px
-    +sprite(error-cloud)
-  &-error-rain
-    position: absolute
-    top: 6px + image-height(image(error-cloud))
-    left: 10px
-    height: 8px
-    width: 15px
-    background: inline-image(image(error-rain)) repeat 0 0
-    +animation(uploadcare-line-pulse, 1.3s)
-  &-error-text
-    float: left
-    margin-left: 36px
-    width: 225px
-  &-error-back
-    display: block
-    float: right
-    padding: 2px
-    margin: 4px 4px 0 0
-    +sprite(error-cancel)
+    background: #b7e2f3 inline-image(image(progress))
+    +box-shadow(rgba(255, 255, 255, 0.3) 0 1px 0 0 inset)
+
+// Error
+.#{$parent}-error-wrapper
+  display: none
+  position: absolute
+  top: -1px
+  left: -1px
+  overflow: hidden
+  z-index: 10
+  
+.#{$parent}-error
+  padding: 5px 0
+  line-height: $height - 10px
+  width: $width
+  border: 1px solid #dda1a5
+  +border-radius(2px)
+  color: #d15d62
+  background: white
+  +box-shadow(rgba(206, 88, 93, 0.45) 0 0 15px 0 inset)
+  position: relative
+  display: inline-block
+  
+.#{$parent}-error-cloud
+  position: absolute
+  top: 6px
+  left: 9px
+  +sprite(error-cloud)
+  
+.#{$parent}-error-rain
+  position: absolute
+  top: 6px + image-height(image(error-cloud))
+  left: 10px
+  height: 8px
+  width: 15px
+  background: inline-image(image(error-rain)) repeat 0 0
+  +animation(uploadcare-line-pulse, 1.3s)
+  
+.#{$parent}-error-text
+  float: left
+  margin-left: 36px
+  width: 225px
+  
+.#{$parent}-error-back
+  display: block
+  float: right
+  padding: 2px
+  margin: 4px 4px 0 0
+  +sprite(error-cancel)
 
 $vendors: "" "-webkit-" "-moz-"
 @each $vendor in $vendors
