@@ -6,6 +6,8 @@ To develop, test and build you need [Node.js] and [npm] to install
 JS dependencies. For example, for Ubuntu:
 
 ```
+sudo add-apt-repository ppa:gias-kay-lee/npm
+sudo apt-get update
 sudo apt-get install npm
 ```
 
@@ -15,8 +17,16 @@ Next to install NPM dependencies run in project dir:
 npm install
 ```
 
+To build CSS styles for widget you need [Compass]. For example, for Ubuntu:
+
+```
+sudo apt-get install ruby1.9.1 ruby1.9.1-dev
+sudo gem1.9.1 install compass --no-user-install --bindir /usr/bin
+```
+
 [Node.js]: http://nodejs.org/
 [npm]: http://npmjs.org/
+[Compass]: http://compass-style.org/
 
 ### Testing
 
