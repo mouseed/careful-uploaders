@@ -25,13 +25,6 @@ sudo apt-get install ruby1.9.1 ruby1.9.1-dev
 sudo gem1.9.1 install compass --no-user-install --bindir /usr/bin
 ```
 
-In case of RVM:
-
-```
-rvm use system
-gem install compass --no-user-install --bindir /usr/bin --no-ri --no-rdoc
-```
-
 [Node.js]: http://nodejs.org/
 [npm]: http://npmjs.org/
 [Compass]: http://compass-style.org/
