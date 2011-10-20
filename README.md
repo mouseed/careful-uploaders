@@ -6,9 +6,10 @@ To develop, test and build you need [Node.js] and [npm] to install
 JS dependencies. For example, for Ubuntu:
 
 ```
+sudo add-apt-repository ppa:chris-lea/node.js
 sudo add-apt-repository ppa:gias-kay-lee/npm
 sudo apt-get update
-sudo apt-get install npm
+sudo apt-get install nodejs npm
 ```
 
 Next to install NPM dependencies run in project dir:
