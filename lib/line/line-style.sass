@@ -240,6 +240,21 @@ $parent: 'uploadcare-line'
   margin: 4px 4px 0 0
   +sprite(error-cancel)
 
+//File info
+.#{$parent}-filedata
+  position: relative
+
+.#{$parent}-filedata-filename
+  float: left
+  display: block
+  padding-left: 30px
+  
+.#{$parent}-filedata-filesize
+  float: left
+  display: block
+  padding-left: 10px
+  font-weight: normal
+
 $vendors: "" "-webkit-" "-moz-"
 @each $vendor in $vendors
   @#{$vendor}keyframes uploadcare-line-pulse

@@ -6,6 +6,7 @@
     "line-widget":  ["uploader.js",
                      "plain/plain-widget.js",
                      "line/line-widget.js",
+                     "file-data.js",
                      "line/i18n",
                      "line/line-template.haml",
                      "line/line-style.sass",
