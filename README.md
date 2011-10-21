@@ -45,3 +45,20 @@ To build production ready JS files of widgets just call in project dir:
 ```
 ./node_modules/.bin/cake build
 ```
+
+### Use
+
+To use widgets in production, you need to put hidden input field with corresponding role into your upload form. Example:
+```
+<form action="/some_upload" method="POST">
+  <input type="hidden" role="uploadcare-plain-uploader" />
+  <input type="submit" />
+</form>
+```
+
+Then drop built JS files to your 'javascripts' directory and include them:
+```
+<script src="/javascripts/plain-widget.js" data-public-key="YOUR_KEY"></script>
+```
+
+And you're ready to go.
