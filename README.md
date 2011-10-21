@@ -50,7 +50,7 @@ To build production ready JS files of widgets just call in project dir:
 
 To use widgets in production, you need to put hidden input field with corresponding role into your upload form. Example:
 
-    <form action="/some_upload" method="POST">
+    <form action="/some_upload" method="POST" enctype="multipart/form-data">
       <input type="hidden" role="uploadcare-plain-uploader" />
       <input type="submit" />
     </form>
