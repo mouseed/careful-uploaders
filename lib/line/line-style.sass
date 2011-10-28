@@ -244,10 +244,11 @@ $parent: 'uploadcare-line'
 .#{$parent}-filedata
   position: relative
   top: 1px
+  height: 30px
 
 .#{$parent}-filedata-icon-placeholder
-  display: block
-  float: left
+  display: inline-block
+  vertical-align: top
   +background( linear-gradient(#f2fdf3, #E7F0D5) )
   border-right: 1px solid #D8D8D8
   width: 30px
@@ -260,15 +261,34 @@ $parent: 'uploadcare-line'
   height: 30px
 
 .#{$parent}-filedata-filename
-  float: left
-  display: block
+  position: relative
+  display: inline-block
+  vertical-align: top
   padding-left: 30px
+  width: 50%
+  height: 30px
   
 .#{$parent}-filedata-filesize
-  float: left
-  display: block
+  display: inline-block
+  vertical-align: top
   padding-left: 10px
-  font-weight: normal
+  font-weight: bold
+  height: 30px
+  width: 60px
+  position: relative
+
+  
+//DragDrop - tiny
+.#{$parent}-tinydrop
+  position: relative
+  height: 30px
+  text-align: center
+  
+.#{$parent}-dropzone
+  position: absolute
+  left: 0
+  top: 0
+  z-index: 10
 
 $vendors: "" "-webkit-" "-moz-"
 @each $vendor in $vendors
