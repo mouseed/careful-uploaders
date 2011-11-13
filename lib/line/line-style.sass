@@ -286,18 +286,35 @@ $parent: 'uploadcare-line'
   
 //DragDrop - tiny
 .#{$parent}-tinydrop
+  background: inline-image(image(drop-zone)) no-repeat 0 0
   position: relative
+  //left: -1px
+  top: 1px
   height: 30px
+  margin-right: -2px
   text-align: center
   span
+    color: #7391a0
     display: inline-block
     //margin-top: 15px
+  .dnd-arrow
+    background: inline-image(image(dnd-arrow)) no-repeat 0 0
+    display: inline-block
+    width: 10px
+    height: 12px
+    margin-bottom: -2px
+    margin-right: 5px
     
 .#{$parent}-dropzone
   position: absolute
   left: 0
   top: 0
   z-index: 10
+
+.#{$parent}-uploader-dnd
+  border: 1px solid #b2cedc
+  .#{$parent}-tinydrop
+    top: 0px
 
 $vendors: "" "-webkit-" "-moz-"
 @each $vendor in $vendors
