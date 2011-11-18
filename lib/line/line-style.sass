@@ -286,17 +286,23 @@ $parent: 'uploadcare-line'
   
 //DragDrop - tiny
 .#{$parent}-tinydrop
-  background: inline-image(image(drop-zone)) no-repeat 0 0
   position: relative
   //left: -1px
   top: 1px
   height: 30px
-  margin-right: -2px
   text-align: center
+
+.#{$parent}-drop-decoration
+  position: absolute
+  left: 10px
+  top: 0px
+  background: inline-image(image(dnd-fill)) repeat-x 0 0
+  background-position-x: -1px
+  z-index: 1
   span
     color: #7391a0
     display: inline-block
-    //margin-top: 15px
+    z-index: 5
   .dnd-arrow
     background: inline-image(image(dnd-arrow)) no-repeat 0 0
     display: inline-block
@@ -304,6 +310,21 @@ $parent: 'uploadcare-line'
     height: 12px
     margin-bottom: -2px
     margin-right: 5px
+    z-index: 5
+  .lc
+    position: absolute
+    left: -10px
+    top: 0
+    width: 10px
+    height: 30px
+    background: inline-image(image(dnd-lc)) no-repeat 0 0
+  .rc
+    position: absolute
+    right: -10px
+    top: 0
+    width: 10px
+    height: 30px
+    background: inline-image(image(dnd-rc)) no-repeat 0 0
     
 .#{$parent}-dropzone
   position: absolute
