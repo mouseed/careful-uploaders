@@ -262,9 +262,14 @@ $parent: 'uploadcare-line'
   
 .#{$parent}-filedata-icon-placeholder-icon
   position: relative
-  background: inline-image(image(upload-success)) no-repeat 0 0
-  width: 30px
-  height: 30px
+  display: inline-block
+  border: 0 none
+  margin-left: 6px
+  margin-top: 6px
+  padding: 0
+  +sprite(upload-success)
+  width: 18px
+  height: 18px
 
 .#{$parent}-filedata-filename
   position: relative
