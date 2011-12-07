@@ -1,0 +1,26 @@
+/* backgrounds */
+.uploadcare-line-buttons .uploadcare-line-computer .uploadcare-line-icon { background: url('http://static.uploadcare.com/assets/compat/images/computer.png') no-repeat 50% 50% !important }
+.uploadcare-line-buttons .uploadcare-line-web .uploadcare-line-icon { background: url('http://static.uploadcare.com/assets/compat/images/web.png') no-repeat 50% 50% !important }
+.uploadcare-line-progress div { background: #b7e2f3 url('http://static.uploadcare.com/assets/compat/images/progress.png') !important }
+.uploadcare-line-error-cloud { background: url('http://static.uploadcare.com/assets/compat/images/error-cloud.png') no-repeat 50% 50% !important }
+.uploadcare-line-error-rain { background: url('http://static.uploadcare.com/assets/compat/images/error-rain.png') no-repeat 50% 50% !important }
+.uploadcare-line-error-back { background: url('http://static.uploadcare.com/assets/compat/images/error-cancel.png') no-repeat 50% 50% !important }
+.uploadcare-line-filedata-icon-placeholder-icon { background: url('http://static.uploadcare.com/assets/compat/images/upload-success.png') no-repeat 0 0 !important }
+.uploadcare-line-tinydrop { background: url('http://static.uploadcare.com/assets/compat/images/drop-zone.png') no-repeat 0 0 !important }
+.uploadcare-line-tinydrop .dnd-arrow { background: url('http://static.uploadcare.com/assets/compat/images/dnd-arrow.png') no-repeat 0 0 !important }
+.uploadcare-line-cancel { background: url('http://static.uploadcare.com/assets/compat/images/cancel.png') no-repeat 50% 50% !important }
+.uploadcare-line-thumb-empty { background: url('http://static.uploadcare.com/assets/compat/images/empty.png') no-repeat 50% 50% !important }
+
+/* gradient */
+.uploadcare-uploader { 
+  zoom: 1; 
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#ececec'); 
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fcfcfc', endColorstr='#ececec')";
+}
+
+/* positions */
+.uploadcare-line-from-url { top: -7 }
+.uploadcare-uploader { top: -999 }
+.uploadcare-line-filedata-icon-placeholder, .uploadcare-line-filedata-filename, .uploadcare-line-filedata-filesize {
+  float: left !important;
+}
