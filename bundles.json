@@ -11,5 +11,10 @@
                      "line/i18n",
                      "line/line-template.haml",
                      "line/line-style.sass",
-                     "line/line-init.js"]
+                     "line/line-init.js"],
+     "barebone-widget": ["uploader.js",
+                         "plain/plain-widget.js",
+                         "file-data.js",
+                         "barebone/barebone-widget.js",
+                         "barebone/barebone-init.js"]
 }
