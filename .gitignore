@@ -2,3 +2,7 @@ node_modules
 pkg
 tmp
 .sass-cache
+spec/integration/widget-test.html
+src
+.DS_Store
+.rvmrc

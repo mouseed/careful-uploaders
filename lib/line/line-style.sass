@@ -244,10 +244,17 @@ $parent: 'uploadcare-line'
 .#{$parent}-filedata
   position: relative
   top: 1px
+  height: 30px
+  a.uploadcare-line-cancel
+    display: inline-block !important
+    margin: 0
+    position: relative
+    top: 9px
+    right: 4px
 
 .#{$parent}-filedata-icon-placeholder
-  display: block
-  float: left
+  display: inline-block
+  vertical-align: top
   +background( linear-gradient(#f2fdf3, #E7F0D5) )
   border-right: 1px solid #D8D8D8
   width: 30px
@@ -255,20 +262,85 @@ $parent: 'uploadcare-line'
   
 .#{$parent}-filedata-icon-placeholder-icon
   position: relative
-  background: inline-image(image(upload-success)) no-repeat 0 0
-  width: 30px
-  height: 30px
+  display: inline-block
+  border: 0 none
+  margin-left: 6px
+  margin-top: 6px
+  padding: 0
+  +sprite(upload-success)
+  width: 18px
+  height: 18px
 
 .#{$parent}-filedata-filename
-  float: left
-  display: block
+  position: relative
+  display: inline-block
+  vertical-align: top
   padding-left: 30px
+  width: 50%
+  height: 30px
   
 .#{$parent}-filedata-filesize
-  float: left
-  display: block
+  display: inline-block
+  vertical-align: top
   padding-left: 10px
-  font-weight: normal
+  font-weight: bold
+  height: 30px
+  width: 60px
+  position: relative
+
+  
+//DragDrop - tiny
+.#{$parent}-tinydrop
+  position: relative
+  //left: -1px
+  top: 1px
+  height: 30px
+  text-align: center
+
+.#{$parent}-drop-decoration
+  position: absolute
+  left: 10px
+  top: 0px
+  background: inline-image(image(dnd-fill)) repeat-x 0 0
+  background-position-x: -1px
+  z-index: 1
+  span
+    color: #7391a0
+    display: inline-block
+    z-index: 5
+  .dnd-arrow
+    background: inline-image(image(dnd-arrow)) no-repeat 0 0
+    display: inline-block
+    width: 10px
+    height: 12px
+    margin-bottom: -2px
+    margin-right: 5px
+    z-index: 5
+  .lc
+    position: absolute
+    left: -10px
+    top: 0
+    width: 10px
+    height: 30px
+    background: inline-image(image(dnd-lc)) no-repeat 0 0
+  .rc
+    position: absolute
+    right: -10px
+    top: 0
+    width: 10px
+    height: 30px
+    background: inline-image(image(dnd-rc)) no-repeat 0 0
+    
+.#{$parent}-dropzone
+  position: absolute
+  left: 0
+  top: 0
+  z-index: 10
+
+.#{$parent}-uploader-dnd
+  border: 1px solid #b2cedc
+  .#{$parent}-tinydrop
+    top: 0px
 
 $vendors: "" "-webkit-" "-moz-"
 @each $vendor in $vendors
