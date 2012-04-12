@@ -105,6 +105,9 @@ describe 'UploadCare', ->
       promise = UploadCare._promise($.Deferred())
       expect(typeof(promise.progress)).toEqual('function')
 
+  ###
+  TODO: Fix block
+  ###
   describe '._params', ->
 
     it 'should add global public key', ->
@@ -135,6 +138,9 @@ describe 'UploadCare', ->
       UploadCare.ready(another)
       expect(another).toHaveBeenCalledWith(UploadCare.jQuery)
 
+  ###
+  TODO: Add webrunner/express interfaces to handle uploads
+  ###
   describe '.byIframe', ->
 
     it 'should upload file to server', ->
@@ -160,6 +166,9 @@ describe 'UploadCare', ->
         expect(answer.UPLOADCARE_MEDIUM).toEqual('test')
         expect(answer.uploaded).toBeDefined()
 
+  ###
+  TODO: Check the fuck is going on here
+  ###
   describe '.byUrl', ->
     progressing = starting = null
     originEvery = UploadCare.byUrl.checkEvery
