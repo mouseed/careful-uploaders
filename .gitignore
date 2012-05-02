@@ -6,3 +6,4 @@ spec/integration/widget-test.html
 src
 .DS_Store
 .rvmrc
+__spec

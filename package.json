@@ -1,14 +1,15 @@
 {
   "name": "careful-uploaders",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "devDependencies": {
-    "coffee-script":  "1.1.2",
-    "uglify-js":      "1.0.6",
-    "wrench":         "1.1.0",
-    "jquery":         "1.6.2",
-    "jasmine-runner": "0.2.9",
-    "formidable":     "1.0.2",
-    "watch":          "0.3.2",
-    "haml":           "0.4.2"
+    "coffee-script":  ">=1.1.2",
+    "uglify-js":      ">=1.0.6",
+    "wrench":         ">=1.1.0",
+    "jquery":         ">=1.6.2",
+    "jquery-browser": ">=1.7.2",
+    "express":        "~2.5",
+    "formidable":     ">=1.0.2",
+    "watch":          ">=0.3.2",
+    "haml":           ">=0.4.2"
   }
 }
