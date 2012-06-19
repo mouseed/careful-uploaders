@@ -47,3 +47,9 @@ To build production ready JS files of widgets just call in project dir:
 ```
 ./node_modules/.bin/cake build
 ```
+
+To build unpacked version of widgets:
+
+```
+./node_modules/.bin/cake dev-build
+```
