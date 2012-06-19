@@ -25,6 +25,8 @@ sudo apt-get install ruby1.9.1 ruby1.9.1-dev
 sudo gem1.9.1 install compass --no-user-install --bindir /usr/bin
 ```
 
+Please note, that newest versions of `rubygems-bundler` conflicts with Compass and causes an exception when using with `rvm`. You can fix it by running `rubygems-bundler-uninstaller` after Compass installation, or by installing Compass version `0.11.7`. [Read more](http://stackoverflow.com/questions/10610254/cant-install-compass-via-rvm/).
+
 [Node.js]: http://nodejs.org/
 [npm]: http://npmjs.org/
 [Compass]: http://compass-style.org/
