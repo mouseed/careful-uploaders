@@ -162,9 +162,25 @@ task 'clobber', 'Delete all generated files', ->
   wrench.rmdirSyncRecursive('pkg/') if path.existsSync('pkg/')
 
 task 'test', 'Run specs server', ->
-  webrunner = require('./tools/webrunner')
-  webrunner.app.listen 8124
-  console.log 'Server started, 127.0.0.1:8124'
+  listener.once 'testReady', (s) ->
+    fs.mkdirSync('tmp')
+    
+    webrunner = require('./tools/webrunner')
+    webrunner.app.listen 8124
+    console.log 'Server started, 127.0.0.1:8124'
+
+  if not fs.existsSync('spec/src') or not fs.existsSync('spec/src/line-widget.en.js')
+    fs.mkdirSync('spec/src')
+
+    listener.once 'builded', (s) ->
+      js = fs.readFileSync('pkg/line-widget.en.js')
+      fs.writeFileSync('spec/src/line-widget.en.js', js)
+
+      listener.emit 'testReady'
+
+    build()
+  else
+    listener.emit 'testReady'
 
 task 'watch', 'Rebuild widgets after any file changes', ->
   build('development')

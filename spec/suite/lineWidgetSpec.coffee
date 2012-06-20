@@ -73,9 +73,13 @@ describe "UploadCare.Line", ->
       it "should upload file and receive file_id and token", ->
         success = jasmine.createSpy()
         
-        uploader = UploadCare.upload file,
-          meduim: 'line'
-          publicKey: pubkey
+        try
+          uploader = UploadCare.upload file,
+            meduim: 'line'
+            publicKey: pubkey
+        catch error
+          console.error error
+        
         form = $ 'form'
         iframe = $ 'iframe'
         
@@ -85,6 +89,8 @@ describe "UploadCare.Line", ->
           answer = $.parseJSON iframe.contents().text()
           waitsFor -> i isnt null
           successId = i
+        .error ->
+          console.log 'wut'
           
         waitsFor -> answer isnt null
         

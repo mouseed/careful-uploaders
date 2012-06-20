@@ -7,3 +7,4 @@ src
 .DS_Store
 .rvmrc
 __spec
+npm-debug.log

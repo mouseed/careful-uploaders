@@ -74,7 +74,8 @@ app.get /^\/(suite|helpers)\/([^\/]+)/, (rq, rs) ->
     
     if sectionPath?
       file = path.join(sectionPath, "#{reqFile.replace(/\.js/, ".coffee")}")
-      proc = child.spawn 'coffee', ["-l", "-p", "#{file}"], {cwd: path.dirname(config.bin.get('coffee'))}
+
+      proc = child.spawn "#{path.dirname(config.bin.get('coffee'))}/coffee", ["-l", "-p", "#{file}"]
       proc.stdout.on 'data', (d) ->
         rs.send d,
           'Content-Type': 'text/javascript'
@@ -86,11 +87,14 @@ app.get /^\/(suite|helpers)\/([^\/]+)/, (rq, rs) ->
   else
     rs.send 404
     
-app.post /^\/iframe(\/)?/, (rq, rs) ->
-  rs.send
-    file_id: rq.body.UPLOADCARE_FILE_ID
-    token: 123456
-  , 200
+app.post /^\/iframe(\/)?/, (rq, rs) ->  
+  try
+    rs.send
+      file_id: rq.body.UPLOADCARE_FILE_ID
+      token: 123456
+    , 200
+  catch error
+    rs.send 403
   
 app.get /^\/from_url(\/)?/, (rq, rs) ->
   rs.send "#{rq.query.jsoncallback}({\"file_id\": \"d4336ac0-8b8b-11e1-b0c4-0800200c9a66\", \"token\": \"123456\"})", 200
