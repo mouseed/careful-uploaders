@@ -1,14 +1,16 @@
-fs     = require('fs')
-sys    = require('sys')
+fs     = require('fs-extra')
 path   = require('path')
 haml   = require('haml')
 child  = require('child_process')
 watch  = require('watch')
 uglify = require('uglify-js')
 wrench = require('wrench')
+events = require('events')
+
+listener = new events.EventEmitter()
 
 build = (development) ->
-  fs.mkdirSync('pkg/', 0755) unless path.existsSync('pkg/')
+  fs.mkdirSync('pkg/', '0755') unless path.existsSync('pkg/')
 
   pack = (bundleName, files) ->
     js = files.reduce ( (all, i) -> all + fs.readFileSync(i) ), ''
@@ -35,7 +37,7 @@ build = (development) ->
       process.stderr.write(error.message)
       process.exit(1) unless development
     if development
-      sys.puts(message)
+      console.log(message)
 
     bundles = JSON.parse(fs.readFileSync('bundles.json'))
     for bundle, files of bundles
@@ -63,11 +65,99 @@ build = (development) ->
       else
         pack(bundle, files)
 
+    listener.emit('builded', {'devMode': development})
     wrench.rmdirSyncRecursive('tmp/') unless development
+
+collect_assets = (development = false) ->
+  version    = JSON.parse(fs.readFileSync('package.json'))['version']
+  assetsPath = "pkg/assets/#{version}"
+
+  if path.existsSync(assetsPath)
+    for extfile in fs.readdirSync(assetsPath)
+      if /\.js/.test(extfile) and /uploadcare/.test(extfile)
+        fs.unlinkSync "#{assetsPath}/#{extfile}"
+  else
+    fs.mkdirSync assetsPath, '0755'
+
+  finalPath = assetsPath + "/" + (if development then "development" else "production")
+
+  if path.existsSync(finalPath)
+    wrench.rmdirSyncRecursive(finalPath)
+
+  fs.mkdirSync finalPath, '0755'
+
+  for srcfile in fs.readdirSync('pkg/')
+    if /\.js/.test(srcfile)
+      src = fs.readFileSync "pkg/#{srcfile}"
+
+      newFileName = switch true
+        when /line/.test(srcfile)
+          if /\.en/.test(srcfile)
+            "uploadcare.js"
+          else
+            srcfile.replace('line-widget.', 'uploadcare_')
+        when /plain/.test(srcfile) then srcfile.replace('plain-widget', 'uploadcare_plain')
+        when /uploader/.test(srcfile) then "uploadcare_#{srcfile}"
+  
+      newFileName = newFileName.replace('.js', '.min.js') unless development
+
+      fs.writeFileSync "#{finalPath}/#{newFileName}", src
+  
+  results =
+    'version': version
+    'rootPath': assetsPath
+    'path': finalPath
+    'devMode': development
+
+  listener.emit('collected', results)
+
+  results
+
+clean_pkg = ->
+  for srcfile in fs.readdirSync('pkg/')
+    if /\.js/.test(srcfile)
+      fs.unlinkSync "pkg/#{srcfile}"
+  listener.emit('cleaned')
+
+build_assets = ->
+  results = []
+
+  listener.on 'builded', (s) ->
+    try
+      collect_assets(s['devMode'])
+    catch error
+      console.error error
+
+  listener.once 'cleaned', (s) ->
+    build(true)
+
+  listener.on 'collected', (s) ->
+    results.push s
+
+    if results.length is 2
+      listener.emit 'assetsFinished', results
+    else
+      clean_pkg()
+
+  build()
+
+  listener.once 'assetsFinished', (s) ->
+    for result in results
+      console.log "Widget bundle of version #{result['version']} was build with " + (if result['devMode'] then "development" else "production") + " environment."
+      console.log "Destination path: #{result['path']}"
+      console.log "\n"
+
+    listener.removeAllListeners()
 
 task 'build', 'Concatenate and compress widgets files', ->
   build()
 
+task 'dev-build', 'Development build', ->
+  build(true)
+
+task 'assets-build', 'Build widgets for using in Rails gem with assets pipeline', ->
+  build_assets()
+  
 task 'clobber', 'Delete all generated files', ->
   wrench.rmdirSyncRecursive('pkg/') if path.existsSync('pkg/')
 
@@ -80,4 +170,4 @@ task 'watch', 'Rebuild widgets after any file changes', ->
   build('development')
   watch.watchTree 'lib/', ->
     console.log('Rebuild')
-    build('development')
+    build(true)
